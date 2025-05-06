@@ -18,4 +18,26 @@ echo '<br>' | sudo tee -a /var/www/html/index.nginx-debian.html
 echo '<a href="https://www.gehana26.fun/shows/">Visit for Shows</a>' | sudo tee -a /var/www/html/index.nginx-debian.html
 sudo systemctl restart nginx
 sudo systemctl enable nginx
-# for ALB
+# for ALB 1a Homepage
+---
+
+#!/bin/bash
+sudo apt update
+sudo apt install nginx -y
+sudo mkdir -p /var/www/html/movies
+sudo mv /var/www/html/index.nginx-debian.html /var/www/html/movies/index.nginx-debian.html
+sudo sed -i 's/<h1>Welcome to nginx!<\/h1>/<h1>Welcome to Movies<\/h1>/' /var/www/html/movies/index.nginx-debian.html
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+# for ALB 1b movies
+---
+
+#!/bin/bash
+sudo apt update
+sudo apt install nginx -y
+sudo mkdir -p /var/www/html/shows
+sudo mv /var/www/html/index.nginx-debian.html /var/www/html/shows/index.nginx-debian.html
+sudo sed -i 's/<h1>Welcome to nginx!<\/h1>/<h1>Welcome to Shows<\/h1>/' /var/www/html/shows/index.nginx-debian.html
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+# for ALB 1c shows
